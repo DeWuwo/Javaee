@@ -27,6 +27,8 @@ dependencies {
     // 添加lombok依赖
     annotationProcessor 'org.projectlombok:lombok:1.18.2'
     compileOnly 'org.projectlombok:lombok:1.18.2'
+    // 添加fastjson依赖
+    compile 'com.alibaba:fastjson:1.2.61'
 }
 
 test {
