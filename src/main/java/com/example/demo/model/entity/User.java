@@ -16,6 +16,6 @@ public class User {
     @Column(name = "parent_id")
     private Integer parentId;
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="create_at")
+    @Column(name = "create_at")
     private Date createAt = new Date();
 }
