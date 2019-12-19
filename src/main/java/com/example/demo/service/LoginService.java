@@ -24,8 +24,6 @@ public class LoginService {
 
     public User checkPassword(String username, String password) throws DemoException {
        try {
-           System.out.println(username);
-           System.out.println(userRepository);
            User user = userRepository.findByUsername(username);
            if (!password.equals(user.getPassword())) {
                throw new DemoException("密码错误");

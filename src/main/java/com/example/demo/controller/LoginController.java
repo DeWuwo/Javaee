@@ -10,6 +10,7 @@ import com.example.demo.service.LoginService;
 import com.example.demo.util.response.BaseResponse;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/login")
@@ -19,7 +20,7 @@ public class LoginController {
     LoginService loginService;
 
     @PostMapping
-    public BaseResponse Login(@RequestBody LoginRequest loginRequest) {
+    public BaseResponse Login(@RequestBody LoginRequest loginRequest, HttpSession session) {
 
 
         try {
@@ -32,6 +33,7 @@ public class LoginController {
             loginData.setType(user.getRole());
             BaseResponse<LoginData> baseResponse = new BaseResponse<>();
             baseResponse.setData(loginData);
+            session.setAttribute(session.getId(), baseResponse.getData());
             return (baseResponse);
         } catch (DemoException e) {
             BaseResponse<String> baseResponse = new BaseResponse<>();
@@ -40,6 +42,14 @@ public class LoginController {
             return baseResponse;
         }
 
+    }
+
+    @DeleteMapping
+    public BaseResponse Logout(HttpSession session) {
+        session.removeAttribute(session.getId());
+        BaseResponse<String> baseResponse = new BaseResponse<>();
+        baseResponse.setData("退出登录成功");
+        return baseResponse;
     }
 
 }
