@@ -7,6 +7,7 @@ import com.example.demo.util.DemoException;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 
 @Component()
 public class UserService {
@@ -32,6 +33,13 @@ public class UserService {
         type++;
         user.setRole(type);
         userRepository.save(user);
+    }
+
+    @Transactional
+    public void deleteUser(int[] userIds) {
+        for (int id: userIds) {
+            userRepository.deleteUserById(id);
+        }
     }
 
 }

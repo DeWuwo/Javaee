@@ -4,6 +4,7 @@ package com.example.demo.controller;
 import com.example.demo.service.UserService;
 import com.example.demo.util.DemoException;
 import com.example.demo.util.request.UserAddRequest;
+import com.example.demo.util.request.UserDeleteRequest;
 import com.example.demo.util.response.BaseResponse;
 import com.example.demo.util.response.LoginData;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +37,15 @@ public class UserController {
           baseResponse.setData(e.getMessage());
           return baseResponse;
       }
+    }
+
+    @DeleteMapping
+    public BaseResponse deleteUser(@RequestBody UserDeleteRequest userDeleteRequest) {
+        int[] userIds = userDeleteRequest.getUser_id();
+        userService.deleteUser(userIds);
+        BaseResponse<String> baseResponse = new BaseResponse<>();
+        baseResponse.setData("删除成功");
+        return baseResponse;
     }
 
 }
