@@ -1,6 +1,8 @@
 package com.example.demo.config;
 
 
+import com.example.demo.Interceptor.AdminIntercepter;
+import com.example.demo.Interceptor.RootIntercepter;
 import com.example.demo.Interceptor.SecurityIntercepter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -18,6 +20,15 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/login")
                 .excludePathPatterns("/logout")
                 //拦截路径
+                .addPathPatterns("/**");
+
+        registry.addInterceptor(new RootIntercepter())
+                .excludePathPatterns("/login")
+                .excludePathPatterns("/logout")
+                .addPathPatterns("/**");
+        registry.addInterceptor(new AdminIntercepter())
+                .excludePathPatterns("/login")
+                .excludePathPatterns("/logout")
                 .addPathPatterns("/**");
     }
 }
