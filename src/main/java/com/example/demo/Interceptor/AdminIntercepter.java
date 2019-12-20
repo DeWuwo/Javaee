@@ -21,6 +21,7 @@ public class AdminIntercepter implements HandlerInterceptor {
         }
         // 否则，拦截该请求
         BaseResponse<String> baseResponse = new BaseResponse<>();
+        baseResponse.setStatus("error");
         baseResponse.setData("未拥有admin权限");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(JSON.toJSONString(baseResponse));

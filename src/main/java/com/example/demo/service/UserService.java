@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Component()
 public class UserService {
@@ -40,6 +41,10 @@ public class UserService {
         for (int id: userIds) {
             userRepository.deleteUserById(id);
         }
+    }
+
+    public List<User> queryUser(int userId) {
+        return userRepository.findUsersByParentId(userId);
     }
 
 }

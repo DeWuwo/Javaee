@@ -23,12 +23,8 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**");
 
         registry.addInterceptor(new RootIntercepter())
-                .excludePathPatterns("/login")
-                .excludePathPatterns("/logout")
-                .addPathPatterns("/**");
+                .excludePathPatterns("/**");
         registry.addInterceptor(new AdminIntercepter())
-                .excludePathPatterns("/login")
-                .excludePathPatterns("/logout")
-                .addPathPatterns("/**");
+                .addPathPatterns("/user");
     }
 }

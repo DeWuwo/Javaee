@@ -17,6 +17,7 @@ public class SecurityIntercepter implements HandlerInterceptor {
             return true;
         }
         BaseResponse<String> baseResponse = new BaseResponse<>();
+        baseResponse.setStatus("error");
         baseResponse.setData("用户尚未登录");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(JSON.toJSONString(baseResponse));

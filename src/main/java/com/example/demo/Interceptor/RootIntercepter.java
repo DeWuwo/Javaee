@@ -21,6 +21,7 @@ public class RootIntercepter implements HandlerInterceptor {
         }
         // 否则，拦截用户请求
         BaseResponse<String> baseResponse = new BaseResponse<>();
+        baseResponse.setStatus("error");
         baseResponse.setData("未拥有root权限");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(JSON.toJSONString(baseResponse));
