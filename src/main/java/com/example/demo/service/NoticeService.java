@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Component
 public class NoticeService {
@@ -30,6 +31,10 @@ public class NoticeService {
             noticeRespository.deleteNoticeById(id);
         }
 
+    }
+
+    public List<Notice> queryNotice(int userId) {
+        return noticeRespository.findNoticesByUserId(userId);
     }
 
 }
