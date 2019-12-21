@@ -47,4 +47,8 @@ public class UserService {
         return userRepository.findUsersByParentId(userId);
     }
 
+    public User queryUserInfo(int userId) {
+        return userRepository.findById(userId);
+    }
+
 }

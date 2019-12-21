@@ -9,6 +9,7 @@ import com.example.demo.util.request.UserDeleteRequest;
 import com.example.demo.util.response.BaseResponse;
 import com.example.demo.util.response.LoginData;
 import com.example.demo.util.response.QueryUserData;
+import com.example.demo.util.response.QueryUserInfoData;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -32,6 +33,18 @@ public class UserController {
         BaseResponse<QueryUserData> baseResponse = new BaseResponse<>();
         baseResponse.setData(queryUserData);
         return baseResponse;
+    }
+
+    @GetMapping("/{userId}")
+    public BaseResponse queryUserInfo(@PathVariable("userId") int userId) {
+
+        User user = userService.queryUserInfo(userId);
+        BaseResponse<QueryUserInfoData> baseResponse = new BaseResponse<>();
+        QueryUserInfoData queryUserData = new QueryUserInfoData();
+        queryUserData.setUser(user);
+        baseResponse.setData(queryUserData);
+        return baseResponse;
+
     }
 
 
