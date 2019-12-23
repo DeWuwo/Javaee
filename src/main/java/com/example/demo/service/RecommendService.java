@@ -53,4 +53,14 @@ public class RecommendService {
 
     }
 
+
+    @Transactional
+    public void deleteRecommend(int[] recommendIds) {
+
+        for (int recommendId : recommendIds) {
+            recommendRespository.deleteRecommendById(recommendId);
+        }
+
+    }
+
 }

@@ -3,6 +3,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.entity.Recommend;
 import com.example.demo.service.RecommendService;
+import com.example.demo.util.request.RecommendDeleteRequest;
 import com.example.demo.util.response.BaseResponse;
 import com.example.demo.util.response.LoginData;
 import com.example.demo.util.response.QueryRecommend.QueryRecommendData;
@@ -37,6 +38,15 @@ public class RecommendController {
         baseResponse.setData(recommend);
         return baseResponse;
 
+    }
+
+    @DeleteMapping
+    public BaseResponse deleteRecommend(@RequestBody RecommendDeleteRequest request) {
+        int[] recommendIds = request.getRecommend_id();
+        recommendService.deleteRecommend(recommendIds);
+        BaseResponse<String> baseResponse = new BaseResponse<>();
+        baseResponse.setData("删除成功");
+        return baseResponse;
     }
 
 }

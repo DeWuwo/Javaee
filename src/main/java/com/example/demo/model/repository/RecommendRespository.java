@@ -9,5 +9,6 @@ public interface RecommendRespository extends CrudRepository<Recommend, Integer>
 
     List<Recommend> findRecommendsByUserId(int Id);
     Recommend findRecommendById(int id);
+    void deleteRecommendById(int id);
 
 }
