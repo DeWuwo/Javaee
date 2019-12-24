@@ -22,9 +22,11 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 //拦截路径
                 .addPathPatterns("/**");
 
-        registry.addInterceptor(new RootIntercepter())
-                .excludePathPatterns("/**");
         registry.addInterceptor(new AdminIntercepter())
-                .addPathPatterns("/user");
+                .addPathPatterns("/user/**")
+                .addPathPatterns("/notice");
+
+        registry.addInterceptor(new RootIntercepter())
+                .addPathPatterns("/img/upload");
     }
 }
