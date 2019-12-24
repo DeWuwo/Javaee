@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 
 import com.example.demo.model.entity.Recommend;
+import com.example.demo.service.ImgService;
 import com.example.demo.service.RecommendService;
 import com.example.demo.util.request.RecommendDeleteRequest;
 import com.example.demo.util.response.BaseResponse;
@@ -18,6 +19,8 @@ public class RecommendController {
 
     @Resource
     RecommendService recommendService;
+    @Resource
+    ImgService imgService;
 
 
     @GetMapping
@@ -47,6 +50,16 @@ public class RecommendController {
         BaseResponse<String> baseResponse = new BaseResponse<>();
         baseResponse.setData("删除成功");
         return baseResponse;
+    }
+
+    @PostMapping("/upload")
+    public BaseResponse postImg(@RequestParam(value = "name") String name) {
+
+        imgService.addImg(name);
+        BaseResponse<String> baseResponse = new BaseResponse<>();
+        baseResponse.setData("添加成功");
+        return baseResponse;
+
     }
 
 }
