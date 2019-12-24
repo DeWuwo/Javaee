@@ -6,7 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface NoticeRespository extends CrudRepository<Notice, Integer> {
-    Notice findNoticeById(int id);
     void deleteNoticeById(int id);
     List<Notice> findNoticesByUserId(int id);
 }

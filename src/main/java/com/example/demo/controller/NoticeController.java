@@ -55,18 +55,4 @@ public class NoticeController {
         return baseResponse;
     }
 
-    @PutMapping("/{noticeId}")
-    public BaseResponse putNotice(@PathVariable("noticeId") int noticeId, @RequestBody NoticeAddRequest noticeAddRequest, HttpSession session) {
-
-        LoginData loginData = (LoginData)session.getAttribute(session.getId());
-        int userId = loginData.getId();
-        String content = noticeAddRequest.getContent();
-        String title = noticeAddRequest.getTitle();
-        int type = noticeAddRequest.getType();
-        int isTop = noticeAddRequest.getIs_top();
-        noticeService.updateNotice(content, title, type, isTop, userId, noticeId);
-        BaseResponse<String> baseResponse = new BaseResponse<>();
-        baseResponse.setData("更新成功");
-        return baseResponse;
-    }
 }
