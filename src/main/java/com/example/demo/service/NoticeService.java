@@ -37,4 +37,16 @@ public class NoticeService {
         return noticeRespository.findNoticesByUserId(userId);
     }
 
+    public void updateNotice(String content, String title, int type, int isTop, int userId, int noticeId) {
+
+        Notice notice = new Notice();
+        notice.setUserId(userId);
+        notice.setType(type);
+        notice.setIsTop(isTop);
+        notice.setContent(content);
+        notice.setTitle(title);
+        notice.setId(noticeId);
+        noticeRespository.save(notice);
+    }
+
 }
