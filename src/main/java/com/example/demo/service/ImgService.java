@@ -20,5 +20,9 @@ public class ImgService {
         imgRepository.save(img);
     }
 
+    public Img getImg(int id) {
+        return imgRepository.findImgById(id);
+    }
+
 
 }
