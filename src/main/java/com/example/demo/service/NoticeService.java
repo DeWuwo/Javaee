@@ -36,5 +36,4 @@ public class NoticeService {
     public List<Notice> queryNotice(int userId) {
         return noticeRespository.findNoticesByUserId(userId);
     }
-
 }

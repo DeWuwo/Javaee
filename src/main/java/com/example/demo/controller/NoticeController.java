@@ -54,5 +54,4 @@ public class NoticeController {
         baseResponse.setData(queryNoticeData);
         return baseResponse;
     }
-
 }
