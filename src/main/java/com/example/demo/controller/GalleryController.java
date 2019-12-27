@@ -3,11 +3,9 @@ package com.example.demo.controller;
 
 import com.example.demo.model.entity.Img;
 import com.example.demo.service.ImgService;
+import com.example.demo.util.request.ImgDeleteRequest;
 import com.example.demo.util.response.BaseResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -25,6 +23,17 @@ public class GalleryController {
         Img img = imgService.getImg(imgId);
         BaseResponse<String> baseResponse = new BaseResponse<>();
         baseResponse.setData(img.getName());
+        return baseResponse;
+
+    }
+
+    @DeleteMapping("/img")
+    public BaseResponse deleteImg(@RequestBody ImgDeleteRequest imgDeleteRequest) {
+
+        int[] imgIds = imgDeleteRequest.getImg_id();
+        imgService.deleteImg(imgIds);
+        BaseResponse<String> baseResponse = new BaseResponse<>();
+        baseResponse.setData("成功删除");
         return baseResponse;
 
     }

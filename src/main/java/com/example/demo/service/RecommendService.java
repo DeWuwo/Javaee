@@ -47,9 +47,25 @@ public class RecommendService {
 
     }
 
-    public Recommend getRecommendInfo(int recommendId) {
+    @Transactional
+    public Body getRecommendInfo(int recommendId) {
 
-        return recommendRespository.findRecommendById(recommendId);
+        Recommend recommend = recommendRespository.findRecommendById(recommendId);
+        Body body = new Body();
+        List<Img> imgs = recommend.getImgs();
+        List<ImgUrl> imgUrls = new ArrayList<>();
+        for (Img img : imgs) {
+            ImgUrl imgUrl = new ImgUrl();
+            imgUrl.setName(img.getName());
+            imgUrl.setId(img.getId());
+            imgUrls.add(imgUrl);
+        }
+        body.setId(recommend.getId());
+        body.setContent(recommend.getContent());
+        body.setImgUrls(imgUrls);
+
+
+        return body;
 
     }
 

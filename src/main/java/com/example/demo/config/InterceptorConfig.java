@@ -27,6 +27,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 .addPathPatterns("/notice");
 
         registry.addInterceptor(new RootIntercepter())
-                .addPathPatterns("/img/upload");
+                .addPathPatterns("/img/upload")
+                .addPathPatterns("/gallery/**");
     }
 }

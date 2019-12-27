@@ -1,12 +1,12 @@
 package com.example.demo.controller;
 
 
-import com.example.demo.model.entity.Recommend;
 import com.example.demo.service.ImgService;
 import com.example.demo.service.RecommendService;
 import com.example.demo.util.request.RecommendDeleteRequest;
 import com.example.demo.util.response.BaseResponse;
 import com.example.demo.util.response.LoginData;
+import com.example.demo.util.response.QueryRecommend.Body;
 import com.example.demo.util.response.QueryRecommend.QueryRecommendData;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,9 +36,9 @@ public class RecommendController {
     @GetMapping("/{recommandId}")
     public BaseResponse getRecommendInfo(@PathVariable("recommandId") int recommendId) {
 
-        BaseResponse<Recommend> baseResponse = new BaseResponse<>();
-        Recommend recommend = recommendService.getRecommendInfo(recommendId);
-        baseResponse.setData(recommend);
+        BaseResponse<Body> baseResponse = new BaseResponse<>();
+        Body body = recommendService.getRecommendInfo(recommendId);
+        baseResponse.setData(body);
         return baseResponse;
 
     }

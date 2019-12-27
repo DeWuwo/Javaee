@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface ImgRepository extends CrudRepository<Img, Integer> {
 
     Img findImgById(int id);
-
+    void deleteImgById(int id);
 }
